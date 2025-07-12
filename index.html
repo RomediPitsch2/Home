@@ -12,17 +12,19 @@
       }
     </style>
     <script>
-      function toggleDetails() {
-        var details = document.getElementById('conrad-details');
-        var btn = document.getElementById('details-btn');
-        if (details.style.display === 'none' || details.style.display === '') {
-          details.style.display = 'block';
-          btn.textContent = 'Details ausblenden';
-        } else {
-          details.style.display = 'none';
-          btn.textContent = 'Details';
-        }
-      }
+       function showFile(filename) {
+    fetch(filename)
+      .then(response => {
+        if (!response.ok) throw new Error('Datei nicht gefunden');
+        return response.text();
+      })
+      .then(html => {
+        document.getElementById('file-content').innerHTML = html;
+      })
+      .catch(error => {
+        document.getElementById('file-content').innerHTML = 'Fehler beim Laden: ' + error;
+      });
+  }
     </script>
   </head>
   <body>
@@ -32,17 +34,8 @@
     <p>
       Conrad Max Gille: 
       <a href="https://www.youtube.com/@Brotundwein">Brot und Wein-Videos</a>
-      <button id="details-btn" onclick="toggleDetails()">Details</button>
+      <button id="details-btn" onclick="toggleDetails("Links/Link1.html)">Details</button>
     </p>
-    <div id="conrad-details" class="details-content" style="display:none;">
-      <p>Weitere Informationen zu Conrad Max Gille:</p>
-      <ul>
-        <li>Predigten und Impulse zu christlichem Leben</li>
-        <li>Besonders zu empfehlen: Serie „Brot und Wein“</li>
-        <li></li>
-      </ul>
-    </br>
-    </div>
     <p>Gaby Wentland: <a href="https://www.youtube.com/@Alltagssieger">Alltagssieger</a></p>
     <p>Philipp Schmerold: <a href="https://www.youtube.com/@revivalchurches">Revival Church</a></p>
     <p>Daniel Exler: <a href="https://www.youtube.com/watch?v=jVAMtc6Bk8U&t=9s">Heilung und Befreiung (1-6)</a></p>    
