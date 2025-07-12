@@ -12,18 +12,21 @@
       }
     </style>
     <script>
-       function showFile(filename) {
+  function showFile(filename, targetId) {
     fetch(filename)
       .then(response => {
         if (!response.ok) throw new Error('Datei nicht gefunden');
         return response.text();
       })
       .then(html => {
-        document.getElementById('file-content').innerHTML = html;
+        document.getElementById(targetId).innerHTML = html;
       })
       .catch(error => {
-        document.getElementById('file-content').innerHTML = 'Fehler beim Laden: ' + error;
+        document.getElementById(targetId).innerHTML = 'Fehler beim Laden: ' + error;
       });
+  }
+</script>
+
   }
     </script>
   </head>
@@ -34,8 +37,8 @@
     <p>
       Conrad Max Gille: 
       <a href="https://www.youtube.com/@Brotundwein">Brot und Wein-Videos</a>
-      <button id="details-btn" onclick="toggleDetails("Conrad.html)">Details</button>
-      <div id="file-content"></div>
+      <button onclick="showFile('Conrad.html')">Details</button>
+      <div id="file-content-conrad"></div>
     </p>
     <p>Gaby Wentland: <a href="https://www.youtube.com/@Alltagssieger">Alltagssieger</a>
       <button id="details-btn" onclick="toggleDetails("Links/Wentland.html)">Details</button>
