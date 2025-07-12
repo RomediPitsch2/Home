@@ -10,6 +10,18 @@
         margin: 0;                        /* Kein äußerer Abstand */
         box-sizing: border-box;           /* Rahmen und Padding werden korrekt berechnet */
       }
+      .header-title {
+        flex: 1;
+        font-size: 2em;
+        font-weight: bold;
+      }
+      .header-image {
+        margin-left: 25px;
+        max-width: 120px;      /* Bild ist kleiner */
+        width: 100%;
+        border: 2px solid darkgreen;
+        border-radius: 10px;
+      }
     </style>
     <script>
 function showFile(filename, targetId) {
