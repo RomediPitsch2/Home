@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Empfehlenswerte Internetseiten</title> 
+<head>
+    <title>Empfehlenswerte Internetseiten</title>
     <style>
-      body {
-        background-color:  lightgreen;
-        border: 5px solid darkgreen;      /* Rahmenfarbe und -dicke */
-        padding: 1cm;                     /* Abstand vom Rahmen zum Inhalt */
-        margin: 0;                        /* Kein äußerer Abstand */
-        box-sizing: border-box;           /* Rahmen und Padding werden korrekt berechnet */
-      }
-      .header-title {
-        flex: 1;
-        font-size: 2em;
-        font-weight: bold;
-      }
-      .header-image {
-        margin-left: 25px;
-        max-width: 120px;      /* Bild ist kleiner */
-        width: 100%;
-        border: 2px solid darkgreen;
-        border-radius: 10px;
-      }
-      .thumbnail-bild {
+        body {
+            background-color: lightgreen;
+            border: 5px solid darkgreen; /* Rahmenfarbe und -dicke */
+            padding: 1cm; /* Abstand vom Rahmen zum Inhalt */
+            margin: 0; /* Kein äußerer Abstand */
+            box-sizing: border-box; /* Rahmen und Padding werden korrekt berechnet */
+        }
+
+        .header-title {
+            flex: 1;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .header-image {
+            margin-left: 25px;
+            max-width: 120px; /* Bild ist kleiner */
+            width: 100%;
+            border: 2px solid darkgreen;
+            border-radius: 10px;
+        }
+
+        .thumbnail-bild {
             vertical-align: middle;
             margin-right: 12px;
             max-width: 60px;
@@ -32,109 +35,110 @@
         }
     </style>
     <script>
-function showFile(filename, targetId) {
-  const targetDiv = document.getElementById(targetId);
-  // Toggle: Wenn Inhalt da ist, leere das Div
-  if (targetDiv.innerHTML.trim() !== "") {
-    targetDiv.innerHTML = "";
-    return;
-  }
-  // Sonst lade die Datei wie bisher
-  fetch(filename)
-    .then(response => {
-      if (!response.ok) throw new Error('Datei nicht gefunden');
-      return response.text();
-    })
-    .then(html => {
-      targetDiv.innerHTML = html;
-    })
-    .catch(error => {
-      targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
-    });
-}
+        function showFile(filename, targetId) {
+            const targetDiv = document.getElementById(targetId);
+            // Toggle: Wenn Inhalt da ist, leere das Div
+            if (targetDiv.innerHTML.trim() !== "") {
+                targetDiv.innerHTML = "";
+                return;
+            }
+            // Sonst lade die Datei wie bisher
+            fetch(filename)
+                .then(response => {
+                    if (!response.ok) throw new Error('Datei nicht gefunden');
+                    return response.text();
+                })
+                .then(html => {
+                    targetDiv.innerHTML = html;
+                })
+                .catch(error => {
+                    targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
+                });
+        }
     </script>
-  </head>
-  <body>
-      <div class="header-container">
-          <div class="header-title">
-              Schatzkiste (empfehlenswerte Internetseiten):
-          </div>
-          <img class="header-image"
-               src="https://img.freepik.com/vektoren-premium/offene-einfache-schatzkiste-flache-vektor-illustration-offene-einfache-schatzkiste-handzeichnung-isolierte-vektor-illustration_501705-874.jpg"
-               alt="Schatzkiste" />
-      </div>
-      <div class="links-container">
-          <p>
-              Conrad Max Gille:
-              <a href="https://www.youtube.com/@Brotundwein">Brot und Wein-Videos</a>
-              <button onclick="showFile('Conrad.html','file-content-conrad')">Details</button>
-              <div id="file-content-conrad"></div>
-          </p>
-          <p>
-              Gaby Wentland: <a href="https://www.youtube.com/@Alltagssieger">Alltagssieger</a>
-              <button onclick="showFile('Wentland.html','file-content-wentland')">Details</button>
-              <div id="file-content-wentland"></div>
-          </p>
-          <p>
-              Philipp Schmerold: <a href="https://www.youtube.com/@revivalchurches">Revival Church</a>
-              <button onclick="showFile('Schmerold.html','file-content-schmerold')">Details</button>
-              <div id="file-content-schmerold"></div>
-          </p>
-          <p>
-              Daniel Exler: <a href="https://www.youtube.com/watch?v=jVAMtc6Bk8U&t=9s">Heilung und Befreiung (1-6)</a>
-              <button onclick="showFile('Exler.html','file-content-exler')">Details</button>
-              <div id="file-content-exler"></div>
-          </p>
-          <p>
-              Hans-Joachim Eckstein: <a href="https://www.youtube.com/watch?v=CrDa3xRDCkk">Abschiedsreden Johannes-Evangelium (1-7)</a>
-              <button onclick="showFile('Eckstein.html','file-content-eckstein')">Details</button>
-              <div id="file-content-eckstein"></div>
-          </p>
-          <p>
-              Homepage von Toby Meyer: <a href="https://www.toby-meyer.ch">Toby-Meyer.ch</a>
-              <button onclick="showFile('Meyer.html','file-content-meyer')">Details</button>
-              <div id="file-content-meyer"></div>
-          </p>
-      </div>
-      </br>
+</head>
+<body>
+    <div class="header-container">
+        <div class="header-title">
+            Schatzkiste (empfehlenswerte Internetseiten):
+        </div>
+        <img class="header-image"
+             src="https://img.freepik.com/vektoren-premium/offene-einfache-schatzkiste-flache-vektor-illustration-offene-einfache-schatzkiste-handzeichnung-isolierte-vektor-illustration_501705-874.jpg"
+             alt="Schatzkiste" />
+    </div>
+    <div class="links-container">
+        <p>
+            Conrad Max Gille:
+            <a href="https://www.youtube.com/@Brotundwein">Brot und Wein-Videos</a>
+            <button onclick="showFile('Conrad.html','file-content-conrad')">Details</button>
+            <div id="file-content-conrad"></div>
+        </p>
+        <p>
+            Gaby Wentland: <a href="https://www.youtube.com/@Alltagssieger">Alltagssieger</a>
+            <button onclick="showFile('Wentland.html','file-content-wentland')">Details</button>
+            <div id="file-content-wentland"></div>
+        </p>
+        <p>
+            Philipp Schmerold: <a href="https://www.youtube.com/@revivalchurches">Revival Church</a>
+            <button onclick="showFile('Schmerold.html','file-content-schmerold')">Details</button>
+            <div id="file-content-schmerold"></div>
+        </p>
+        <p>
+            Daniel Exler: <a href="https://www.youtube.com/watch?v=jVAMtc6Bk8U&t=9s">Heilung und Befreiung (1-6)</a>
+            <button onclick="showFile('Exler.html','file-content-exler')">Details</button>
+            <div id="file-content-exler"></div>
+        </p>
+        <p>
+            Hans-Joachim Eckstein: <a href="https://www.youtube.com/watch?v=CrDa3xRDCkk">Abschiedsreden Johannes-Evangelium (1-7)</a>
+            <button onclick="showFile('Eckstein.html','file-content-eckstein')">Details</button>
+            <div id="file-content-eckstein"></div>
+        </p>
+        <p>
+            Homepage von Toby Meyer: <a href="https://www.toby-meyer.ch">Toby-Meyer.ch</a>
+            <button onclick="showFile('Meyer.html','file-content-meyer')">Details</button>
+            <div id="file-content-meyer"></div>
+        </p>
+    </div>
+    </br>
 
-      Erweckungs-Bewegung im Zürcher Oberland: <a href="https://www.jesus-rettet.ch">Jesus-rettet.ch</a>
-      </br>
-      </br>
-      Englisch:</br></br>
-      Dr. Jim Richards:  <a href="https://www.impactministries.com">Impact-Ministries, USA</a>
-      </br>
-      Deutscher YouTube-Kanal von Dr. Jim Richards: <a href="https://www.youtube.com/@drjimrichardsdeutschland9507">Dr Jim Richards Deutschland</a>
-      </br>
-      </br>
-      Bücher von Dr. Richards auf Deutsch:
-      <div>
-          <img src="Bilder/Gnade.jpg" alt="Gnade Thumbnail" class="thumbnail-bild" />
-          <span>
-              Gnade - die Kraft zur Veränderung:
-              <a href="https://www.gracetoday.de/Buecher/James-B-Richards-Gnade-die-Kraft-zur-Veraenderung.html">Gnade, die Kraft zur Veränderung</a>
-          </span>
-      </div>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-      </br>
-  </body>
+    Erweckungs-Bewegung im Zürcher Oberland: <a href="https://www.jesus-rettet.ch">Jesus-rettet.ch</a>
+    </br>
+    </br>
+    Englisch:</br></br>
+    Dr. Jim Richards:  <a href="https://www.impactministries.com">Impact-Ministries, USA</a>
+    </br>
+    Deutscher YouTube-Kanal von Dr. Jim Richards: <a href="https://www.youtube.com/@drjimrichardsdeutschland9507">Dr Jim Richards Deutschland</a>
+    </br>
+    </br>
+    Bücher von Dr. Richards auf Deutsch:
+    <div>
+        <img src="Bilder/Gnade.jpg" alt="Gnade Thumbnail" class="thumbnail-bild" />
+        <span>
+            Gnade - die Kraft zur Veränderung:
+            <a href="https://www.gracetoday.de/Buecher/James-B-Richards-Gnade-die-Kraft-zur-Veraenderung.html">Gnade, die Kraft zur Veränderung</a>
+        </span>
+    </div>
+    </br>
+    </br><div class="header-title">
+        Das Johannes-Evangelium:</br>
+    </div>
+    </br>
+    Das Johannes-Evangelium eignet sich hervorragend als Einstieg in den christlichen Glauben.</br>
+    </br>
+    <li>Es zeigt, was wirklich wichtig ist.</li></br>
+    <li>Es zeigt, wer Jesus Christus ist.</li></br>
+    <li>Es zeigt, wie man eine Beziehung zu einem unsichtbaren Gott haben kann.</li></br>
+    <li>Es zeigt, wie man viel Frucht bringt.</li></br>
+    <li>Es zeigt, wie Jesus gebetet hat und wie wir beten können.</li></br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+</body>
 </html>
