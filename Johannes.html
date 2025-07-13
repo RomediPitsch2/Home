@@ -1,4 +1,28 @@
-﻿</br><div class="header-title">
+﻿<head>
+    <script>
+        function showFile(filename, targetId) {
+            const targetDiv = document.getElementById(targetId);
+            // Toggle: Wenn Inhalt da ist, leere das Div
+            if (targetDiv.innerHTML.trim() !== "") {
+                targetDiv.innerHTML = "";
+                return;
+            }
+            // Sonst lade die Datei wie bisher
+            fetch(filename)
+                .then(response => {
+                    if (!response.ok) throw new Error('Datei nicht gefunden');
+                    return response.text();
+                })
+                .then(html => {
+                    targetDiv.innerHTML = html;
+                })
+                .catch(error => {
+                    targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
+                });
+        }
+    </script>
+</head>
+</br><div class="header-title">
     Das Johannes-Evangelium:</br>
 </div>
     </br>
