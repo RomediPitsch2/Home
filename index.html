@@ -119,21 +119,19 @@
         </span>
     </div>
     </br>
-    </br><div class="header-title">
-        Das Johannes-Evangelium:</br>
-    </div>
-    </br>
-    Das Johannes-Evangelium eignet sich hervorragend als Einstieg in den christlichen Glauben.</br>
-    </br>
-    <li>Es zeigt, was wirklich wichtig ist.</li></br>
-    <li>Es zeigt, wer Jesus Christus ist.</li></br>
-    <li>Es zeigt, wie man eine Beziehung zu einem unsichtbaren Gott haben kann.</li></br>
-    <li>Es zeigt, wie man viel Frucht bringt.</li></br>
-    <li>Es zeigt, wie Jesus gebetet hat und wie wir beten können.</li></br>
-    </br>
-    </br>
-    </br>
-    </br>
+    <h1>Text von externer Datei</h1>
+    <div id="text-container">Lade Text…</div>
+
+    <script>
+        fetch('Johannes.html') // Pfad zur externen Datei
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('text-container').innerText = data;
+            })
+            .catch(error => {
+                console.error('Fehler beim Laden der Datei:', error);
+            });
+    </script>
     </br>
     </br>
     </br>
