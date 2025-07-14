@@ -64,7 +64,43 @@
             // element.children.length; i++) {
             let meinElement = getInnerTag(element.children[nr]);
             // Mache etwas mit dem aktuellen Tag
-         }
+        }
+        async function ladeHtmlFile(url) {
+            const response = await fetch(url);
+            const htmlText = await response.text();
+
+            // In einen DOM-Tree parsen
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlText.trim();
+
+            // Äußerster Tag (erstes Element)
+            const outerTag = tempDiv.firstElementChild;
+
+            // Anzeige des äußersten Tags
+            const container = document.getElementById('container');
+            container.innerHTML = '';
+
+            // Code für den äußersten Tag anzeigen
+            const pre = document.createElement('pre');
+            pre.textContent = outerTag.outerHTML;
+            container.appendChild(pre);
+
+            // Prüfen, ob innere Tags vorhanden sind
+            if (outerTag.children.length > 0) {
+                const button = document.createElement('button');
+                button.textContent = 'Innere Tags anzeigen';
+                button.onclick = function () {
+                    const innerTagsDiv = document.getElementById('inner-tags');
+                    innerTagsDiv.innerHTML = '';
+                    Array.from(outerTag.children).forEach(child => {
+                        const childPre = document.createElement('pre');
+                        childPre.textContent = child.outerHTML;
+                        innerTagsDiv.appendChild(childPre);
+                    });
+                };
+                container.appendChild(button);
+            }
+        }
     </script>
 </head>
 <body>
@@ -138,27 +174,37 @@
     </div>
     </br>
     <!-- <iframe src="Johannes.html" width="1000" height="400"></iframe>  -->
-        </br>
-        <div id="result"></div>
-        <script>
-            // JavaScript-Code, der direkt ausgeführt wird
+    </br>
+    <div id="result"></div>
+    <script>
+        // JavaScript-Code, der direkt ausgeführt wird
 
-            fetch('Johannes.html')
-                .then(response => {
-                    if (!response.ok) throw new Error('Datei nicht gefunden');
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById("result").innerHTML = html;
-                })
-                .catch(error => {
-                    targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
-                });
-        </script>
-        </br>
-        </br>
-        </br>
-        </br>
-        </br>
-    </body>
+        fetch('Johannes.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Datei nicht gefunden');
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById("result").innerHTML = html;
+                getInnerTag(element, nr)
+            })
+            .catch(error => {
+                targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
+            });
+    </script>
+    <div id="container"></div>
+    <div id="inner-tags"></div>
+
+    <script>
+       
+
+        // Beispiel: Lade eine HTML-Datei namens "sample.html"
+        ladeHtmlFile('sample.html');
+    </script>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+</body>
     </html>
