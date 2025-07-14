@@ -137,28 +137,28 @@
         </span>
     </div>
     </br>
-    <iframe src="Johannes.html" width="600" height="400"></iframe>
-    </br>
-    <div id="result"></div>
-    <script>
-        // JavaScript-Code, der direkt ausgeführt wird
-       
-        fetch('Johannes.html')
-            .then(response => {
-                if (!response.ok) throw new Error('Datei nicht gefunden');
-                return response.text();
-            })
-            .then(html => {
-                document.getElementById("result").innerHTML = html;
-            })
-            .catch(error => {
-                targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
-            });
-    </script>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-</body>
-</html>
+    <!-- <iframe src="Johannes.html" width="1000" height="400"></iframe>  -->
+        </br>
+        <div id="result"></div>
+        <script>
+            // JavaScript-Code, der direkt ausgeführt wird
+
+            fetch('Johannes.html')
+                .then(response => {
+                    if (!response.ok) throw new Error('Datei nicht gefunden');
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById("result").innerHTML = html;
+                })
+                .catch(error => {
+                    targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
+                });
+        </script>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+    </body>
+    </html>
