@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>Empfehlenswerte Internetseiten</title>
@@ -56,6 +56,15 @@
                     targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
                 });
         }
+        function getInnerTag(element,nr) {
+            // Mache etwas mit dem aktuellen Tag
+            // console.log(element.tagName);
+
+            // Gehe alle Kind-Elemente durch
+            // element.children.length; i++) {
+            let meinElement = getInnerTag(element.children[nr]);
+            // Mache etwas mit dem aktuellen Tag
+         }
     </script>
 </head>
 <body>
@@ -113,8 +122,8 @@
     </br>
     2. Kor. 5,17-21: Darum: Ist jemand in Christus, so ist er eine neue Kreatur; das Alte ist vergangen, siehe, Neues ist geworden. Aber das alles ist von Gott, der uns mit
     sich selber versöhnt hat durch Christus und uns das Amt gegeben, das die Versöhnung predigt. Denn Gott war in Christus und versöhnte die Welt mit ihm selber und rechnete
-    ihnen ihre Sünden nicht zu und hat unter uns aufgerichtet das Wort von der Versöhnung. So sind wir nun Botschafter an Christi statt, denn Gott ermahnt durch uns; so 
-    bitten wir nun an Christi statt: Lasst euch versöhnen mit Gott! Denn er hat den, der von keiner Sünde wusste, für uns zur Sünde gemacht, auf dass wir in ihm die 
+    ihnen ihre Sünden nicht zu und hat unter uns aufgerichtet das Wort von der Versöhnung. So sind wir nun Botschafter an Christi statt, denn Gott ermahnt durch uns; so
+    bitten wir nun an Christi statt: Lasst euch versöhnen mit Gott! Denn er hat den, der von keiner Sünde wusste, für uns zur Sünde gemacht, auf dass wir in ihm die
     Gerechtigkeit würden, die vor Gott gilt. 
     </br>
     </br>
@@ -130,6 +139,22 @@
     </br>
     <iframe src="Johannes.html" width="600" height="400"></iframe>
     </br>
+    <div id="result"></div>
+    <script>
+        // JavaScript-Code, der direkt ausgeführt wird
+       
+        fetch('Johannes.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Datei nicht gefunden');
+                return response.text();
+            })
+            .then(html => {
+                document.getElementById("result").innerHTML = html;
+            })
+            .catch(error => {
+                targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
+            });
+    </script>
     </br>
     </br>
     </br>
