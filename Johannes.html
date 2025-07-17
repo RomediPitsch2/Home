@@ -66,11 +66,23 @@
                 //       if (child.tagName === "UL") {
                 alert(child.textContent); // Zeige den Text jedes LI an
                 // Beispiel: Button einfügen
-                const button = document.createElement('div');
+                const button = document.createElement('button');
+                button.textContent = 'Mehr Info';
                 button.textContent = 'Test';
                 if (child.hasChildNodes()) {
                     const ul = child.querySelector('ul');
-                    child.insertBefore(button, ul);                
+                    ul.style.display = 'none';
+                    child.insertBefore(button, ul);
+                    // Button-Klick-Event: Ul ein-/ausblenden
+                    button.addEventListener('click', function () {
+                        if (ul.style.display === 'none') {
+                            ul.style.display = '';
+                            button.textContent = 'Weniger anzeigen';
+                        } else {
+                            ul.style.display = 'none';
+                            button.textContent = 'Mehr anzeigen';
+                        }
+                    });
                 };
                 //alert("outerHTML: " + container.outerHTML);
                 alert("innerHTML: " + container.innerHTML);
