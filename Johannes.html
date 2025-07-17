@@ -60,11 +60,6 @@
 
     <script>
 
-        function setze_ButtonsbyId(id) {
-            const container = document.getElementById(id);
-            setzeButton(container);
-        }
-
         function setzeButtonsbyId(container) {
             // Über alle direkten LI-Kinder des UL iterieren
             Array.from(container.children).forEach(child => {
@@ -93,6 +88,10 @@
                 //alert("outerHTML: " + container.outerHTML);
             })
         };
+        function setze_ButtonsbyId(id) {
+            const container = document.getElementById(id);
+            setzeButton(container);
+        }
         setze_Buttons('mitButtons');
     </script>
     
