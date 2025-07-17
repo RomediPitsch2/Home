@@ -64,11 +64,11 @@
                     button.textContent = 'Innere Tags anzeigen';
                     button.onclick = function () {
                         const innerTagsDiv = document.getElementById('inner-tags');
-                        innerTagsDiv.innerHTML = '';
-                        Array.from(outerTag.children).forEach(child => {
-                            const childPre = document.createElement('pre');
-                            childPre.textContent = child.outerHTML;
-                            innerTagsDiv.appendChild(childPre);
+               //         innerTagsDiv.innerHTML = '';
+               //         Array.from(outerTag.children).forEach(child => {
+                 //           const childPre = document.createElement('pre');
+                   //         childPre.textContent = child.outerHTML;
+                     //       innerTagsDiv.appendChild(childPre);
                         });
                     };
                     //child.appendChild(button);
