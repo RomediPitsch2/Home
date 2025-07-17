@@ -52,7 +52,7 @@
 
                 // Über alle direkten LI-Kinder des UL iterieren
                 Array.from(ul.children).forEach(child => {
-                    if (child.tagName == "UL") {
+                    if (child.tagName == "LI") {
                         alert(child.innerHTML);
 
                         const button = document.createElement('button');
@@ -75,8 +75,14 @@
 
 
 
-               
-                }
+                // Anzeige des äußersten Tags
+
+
+                // Code für den äußersten Tag anzeigen
+                const pre = document.createElement('pre');
+                pre.textContent = outerTag.outerHTML;
+                container.appendChild(pre);
+
             }
         setzeButtons('mitButtons');
     </script>
