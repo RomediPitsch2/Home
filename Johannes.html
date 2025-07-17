@@ -50,7 +50,7 @@
             tempDiv.outerHTML = "Das ist ein neues Div";
             tempDiv.innerHTML = "";
             neuesDiv.textContent = "Das ist ein neues Div!";
-            container.insertAdjacentElement('afterend', neuesDiv); // Div NACH dem UL!
+            tempDiv.insertAdjacentElement('afterend', neuesDiv); // Div NACH dem UL!
 
             // Äußerster Tag (erstes Element)
             const outerTag = tempDiv.firstElementChild;
