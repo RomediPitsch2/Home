@@ -52,10 +52,25 @@
 
                 // Über alle direkten LI-Kinder des UL iterieren
                 Array.from(ul.children).forEach(child => {
-                    if (child.tagName == "ul") {
+                    if (child.tagName == "UL") {
                         alert(child.innerHTML);
+
+                        const button = document.createElement('button');
+                        button.textContent = 'Innere Tags anzeigen';
+                        button.onclick = function () {
+                            const innerTagsDiv = document.getElementById('inner-tags');
+                            innerTagsDiv.innerHTML = '';
+                            Array.from(outerTag.children).forEach(child => {
+                                const childPre = document.createElement('pre');
+                                childPre.textContent = child.outerHTML;
+                                innerTagsDiv.appendChild(childPre);
+                            });
+                        };
+                        child.appendChild(button);
+
                     }
                     alert(child.tagName);
+                    alert(child.innerHTML);
                 });
 
 
