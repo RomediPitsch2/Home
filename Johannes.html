@@ -14,7 +14,7 @@
              <li>
                  Es zeigt, was wirklich wichtig ist.
                  <ul>
-                     <li>Ohne irgend eine anderes Wort zu verlieren, sagte Jesus zu Nikodemus: Ihr müsst von Neuem geboren werden.</li>
+                     <li>Ohne vorher ein anderes Wort mit ihm zu wechseln, sagte Jesus zu Nikodemus: Ihr müsst von Neuem geboren werden.</li>
                      <li>Johannes 3,3; Jesus antwortete und sprach zu ihm: Wahrlich, wahrlich, ich sage dir: Wenn jemand nicht von Neuem geboren wird, so kann er das Reich Gottes nicht sehen.</li></br>
                      <li>
                          Was Jesus im Johannes-Evangelium in einem Satz sagt, beschrieb Paulus ausführlich in den ersten 8 Kapiteln des Römerbriefs.
@@ -27,6 +27,7 @@
                              <li>Paulus zeigt, dass wir in Christus (durch das Leben im Geist und durch das Trachten des Geistes) keine Verdammnis mehr haben: <a href="https://www.bibleserver.com/ELB/Roemer8" target="_blank">Römer 8</a></li>
                          </ul>
                      </li>
+                     <li>In Athen hielt Paulus eine <a href="https://www.bibleserver.com/ELB/Apostelgeschichte17%2C21-32" target="_blank">evangelistische Predigt</li>
                  </ul>
              </li>
              <li>Es zeigt, wer Jesus Christus ist.
@@ -59,8 +60,12 @@
 
     <script>
 
-        function setze_Buttons(id) {
+        function setze_ButtonsbyId(id) {
             const container = document.getElementById(id);
+            setzeButton(container);
+        }
+
+        function setzeButtonsbyId(container) {
             // Über alle direkten LI-Kinder des UL iterieren
             Array.from(container.children).forEach(child => {
                 //       if (child.tagName === "UL") {
@@ -81,6 +86,9 @@
                             button.textContent = 'Mehr anzeigen';
                         }
                     });
+                    Array.from(u1.children).forEach(child => {
+                        setzeButton(ul);
+                    }
                 };
                 //alert("outerHTML: " + container.outerHTML);
             })
