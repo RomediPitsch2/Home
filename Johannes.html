@@ -56,7 +56,7 @@
             Array.from(ul.children).forEach(child => {
           //      if (child.tagName == "LI") {
                     alert(child.innerHTML);
-                    container.outerHTML = container.outerHTML + child.innerHTML;
+                    container.outerHTML = container.outerHTML + child.innerHTML+ child.TagName;
                     const button = document.createElement('button');
                     button.textContent = 'Innere Tags anzeigen';
                     button.onclick = function () {
@@ -68,7 +68,7 @@
                             innerTagsDiv.appendChild(childPre);
                         });
                     };
-                    child.appendChild(button);
+                    //child.appendChild(button);
 
           //      }
                 alert(child.tagName);
