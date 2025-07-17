@@ -55,9 +55,10 @@
             // Über alle direkten LI-Kinder des UL iterieren
             Array.from(ul.children).forEach(child => {
           //      if (child.tagName == "LI") {
-                    alert(child.innerHTML);
+                    
                     container.outerHTML = container.outerHTML + child.innerHTML+ child.TagName;
-                    const button = document.createElement('button');
+                alert(container.outerHTML);
+                const button = document.createElement('button');
                     button.textContent = 'Innere Tags anzeigen';
                     button.onclick = function () {
                         const innerTagsDiv = document.getElementById('inner-tags');
