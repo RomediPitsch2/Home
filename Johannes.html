@@ -60,7 +60,7 @@
 
     <script>
 
-        function setzeButtonsbyId(container) {
+        function setzeButton(container) {
             // Über alle direkten LI-Kinder des UL iterieren
             Array.from(container.children).forEach(child => {
                 //       if (child.tagName === "UL") {
@@ -81,8 +81,8 @@
                             button.textContent = 'Mehr anzeigen';
                         }
                     });
-                    Array.from(u1.children).forEach(child => {
-                        setzeButton(ul);
+                    Array.from(ul.children).forEach(child2 => {
+                        setzeButton(child2);
                     }
                 };
                 //alert("outerHTML: " + container.outerHTML);
@@ -92,7 +92,7 @@
             const container = document.getElementById(id);
             setzeButton(container);
         }
-        setze_Buttons('mitButtons');
+        setze_ButtonsbyId('mitButtons');
     </script>
     
 </body>
