@@ -33,8 +33,11 @@
                      <li>Jesus offenbarte sich in 7 ICH-BIN-Worten:</li>
                      <li><a href="https://www.bibleserver.com/ELB/Johannes6%2C48" target="_blank">Ich bin das Wort des Lebens</a></li>
                      <li><a href="https://www.bibleserver.com/ELB/Johannes15%2C1" target="_blank">Ich bin der wahre Weinstock</a></li>
-                     <li><a href="https://www.bibleserver.com/ELB/Johannes15%2C1" target="_blank">Ich bin die Tür zu den Schafen</a></li>
-                     <li><a href="https://www.bibleserver.com/ELB/Johannes15%2C1" target="_blank">Ich bin der Weg, die Wahrheit und das Leben</a></li>
+                     <li><a href="https://www.bibleserver.com/ELB/Johannes10%2C7" target="_blank">Ich bin die Tür zu den Schafen</a></li>
+                     <li><a href="https://www.bibleserver.com/ELB/Johannes8%2C12" target="_blank">Ich bin das Licht der Welt</a></li>
+                     <li><a href="https://www.bibleserver.com/ELB/Johannes14%2C6" target="_blank">Ich bin der Weg, die Wahrheit und das Leben</a></li>
+                     <li><a href="https://www.bibleserver.com/ELB/Johannes11%2C25" target="_blank">Ich bin die Auferstehung und das Leben</a></li>
+                     <li><a href="https://www.bibleserver.com/ELB/Johannes10%2C11" target="_blank"> Ich bin der gute Hirt.</a></li>
                  </ul>
              </li>
              <li>
@@ -105,7 +108,22 @@
             //container.appendChild(pre);
 
         }
-        setzeButtons('mitButtons');
+        function setze_Buttons(id) {
+            const container = document.getElementById(id);
+            // Über alle direkten LI-Kinder des UL iterieren
+            Array.from(container.children).forEach(child => {
+                if (child.tagName === "LI") {
+                    alert(child.textContent); // Zeige den Text jedes LI an
+                    // Beispiel: Button einfügen
+                    const button = document.createElement('div');
+                    button.textContent = 'Test';
+                    child.appendChild(button);
+                }
+            });
+            aler(container.outerHTML);
+            aler(container.innerHTML);
+        }
+        setze_Buttons('mitButtons');
     </script>
     
 </body>
