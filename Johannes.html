@@ -64,27 +64,28 @@
             Array.from(container.children).forEach(child => {
                 //       if (child.tagName === "UL") {
                 // Beispiel: Button einfügen
-                alert(child.tagName);
-                const button = document.createElement('button');
-                button.textContent = 'Mehr Info';
-                if (child.hasChildNodes()) {
-                    const ul = child.querySelector('ul');
-                    if (ul) {
-                        ul.style.display = 'none';
-                        child.insertBefore(button, ul);
-                        // Button-Klick-Event: Ul ein-/ausblenden
-                        button.addEventListener('click', function () {
-                            if (ul.style.display === 'none') {
-                                ul.style.display = '';
-                                button.textContent = 'Weniger anzeigen';
-                            } else {
-                                ul.style.display = 'none';
-                                button.textContent = 'Mehr anzeigen';
-                            }
-                        });
-                        setzeButton(ul);
-                    }
-                };
+                if (child.tagName === "LI") { // <--- Nur LI-Elemente!
+                    const button = document.createElement('button');
+                    button.textContent = 'Mehr Info';
+                    if (child.hasChildNodes()) {
+                        const ul = child.querySelector('ul');
+                        if (ul) {
+                            ul.style.display = 'none';
+                            child.insertBefore(button, ul);
+                            // Button-Klick-Event: Ul ein-/ausblenden
+                            button.addEventListener('click', function () {
+                                if (ul.style.display === 'none') {
+                                    ul.style.display = '';
+                                    button.textContent = 'Weniger anzeigen';
+                                } else {
+                                    ul.style.display = 'none';
+                                    button.textContent = 'Mehr anzeigen';
+                                }
+                            });
+                            setzeButton(ul);
+                        }
+                    };
+                }
                 //alert("outerHTML: " + container.outerHTML);
             })
         };
