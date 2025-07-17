@@ -47,14 +47,15 @@
 
                 alert(tempDiv.innerHTML);
 
+                // Äußerster Tag (erstes Element)
+                const outerTag = tempDiv.firstElementChild;
+
                 Array.from(outerTag.children).forEach(child => {
                     if (child.id == "ul") alert(child.innerHTML);
                     alert(child.id);
                 });
 
 
-                // Äußerster Tag (erstes Element)
-                const outerTag = tempDiv.firstElementChild;
 
                 // Anzeige des äußersten Tags
 
