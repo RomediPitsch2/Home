@@ -69,7 +69,8 @@
                 const button = document.createElement('div');
                 button.textContent = 'Test';
                 if (child.hasChildNodes()) {
-                    child.insertBefore(button, child.firstChild);                
+                    const ul = child.querySelector('ul');
+                    child.insertBefore(button, ul);                
                 };
                 //alert("outerHTML: " + container.outerHTML);
                 alert("innerHTML: " + container.innerHTML);
