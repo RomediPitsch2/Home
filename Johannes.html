@@ -52,8 +52,10 @@
 
                 // Über alle direkten LI-Kinder des UL iterieren
                 Array.from(ul.children).forEach(child => {
-                    alert(child.outerHTML);
-                    alert(child.nodeType);
+                    if (child.tagName == "ul") {
+                        alert(child.innerHTML);
+                    }
+                    alert(child.tagName);
                 });
 
 
