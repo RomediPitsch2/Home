@@ -75,28 +75,7 @@
 
 
 
-                // Anzeige des äußersten Tags
-
-
-                // Code für den äußersten Tag anzeigen
-                const pre = document.createElement('pre');
-                pre.textContent = outerTag.outerHTML;
-                container.appendChild(pre);
-
-                // Prüfen, ob innere Tags vorhanden sind
-                if (outerTag.children.length > 0) {
-                    const button = document.createElement('button');
-                    button.textContent = 'Innere Tags anzeigen';
-                    button.onclick = function () {
-                        const innerTagsDiv = document.getElementById('inner-tags');
-                        innerTagsDiv.innerHTML = '';
-                        Array.from(outerTag.children).forEach(child => {
-                            const childPre = document.createElement('pre');
-                            childPre.textContent = child.outerHTML;
-                            innerTagsDiv.appendChild(childPre);
-                        });
-                    };
-                    container.appendChild(button);
+               
                 }
             }
         setzeButtons('mitButtons');
