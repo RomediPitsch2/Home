@@ -10,6 +10,10 @@
             margin: 0; /* Kein äußerer Abstand */
             box-sizing: border-box; /* Rahmen und Padding werden korrekt berechnet */
         }
+        .header-container {
+            display: flex;
+            align-items: center;
+        }
 
         .header-title {
             flex: 1;
@@ -56,7 +60,7 @@
                     targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
                 });
         }
-        function getInnerTag(element,nr) {
+        function getInnerTag(element, nr) {
             // Mache etwas mit dem aktuellen Tag
             // console.log(element.tagName);
 
@@ -79,6 +83,50 @@
             // Anzeige des äußersten Tags
             const container = document.getElementById('container');
             container.innerHTML = '';
+
+            // Code für den äußersten Tag anzeigen
+            const pre = document.createElement('pre');
+            pre.textContent = outerTag.outerHTML;
+            container.appendChild(pre);
+
+            // Prüfen, ob innere Tags vorhanden sind
+            if (outerTag.children.length > 0) {
+                const button = document.createElement('button');
+                button.textContent = 'Innere Tags anzeigen';
+                button.onclick = function () {
+                    const innerTagsDiv = document.getElementById('inner-tags');
+                    innerTagsDiv.innerHTML = '';
+                    Array.from(outerTag.children).forEach(child => {
+                        const childPre = document.createElement('pre');
+                        childPre.textContent = child.outerHTML;
+                        innerTagsDiv.appendChild(childPre);
+                    });
+                };
+                container.appendChild(button);
+            }
+        }
+        async function setzeButtons(id) {
+            const container = document.getElementById(id);
+
+            var htmlText = container.innerHTML;
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlText.trim();
+
+            // Das Element holen und den HTML-Text setzen
+            var box = document.getElementById(id);
+            box.innerHTML = htmlText;
+
+            // Die Box stylen (Rahmen, Abstand, Hintergrund)
+            box.style.border = "2px solid #333";
+            box.style.padding = "16px";
+            box.style.backgroundColor = "#f3f3f3";
+            box.style.width = "300px";
+            box.style.margin = "20px";
+            // Äußerster Tag (erstes Element)
+            const outerTag = tempDiv.firstElementChild;
+
+            // Anzeige des äußersten Tags
+           
 
             // Code für den äußersten Tag anzeigen
             const pre = document.createElement('pre');
@@ -150,25 +198,25 @@
             <div id="file-content-meyer"></div>
         </p>
     </div>
-    </br>
+    <br>
 
     Erweckungs-Bewegung im Zürcher Oberland: <a href="https://www.jesus-rettet.ch">Jesus-rettet.ch</a>
-    </br>
-    </br>
+    <br>
+    <br>
     Englisch:</br></br>
     Dr. Jim Richards:  <a href="https://www.impactministries.com">Impact-Ministries, USA</a>
-    </br>
+    <br>
     Deutscher YouTube-Kanal von Dr. Jim Richards: <a href="https://www.youtube.com/@drjimrichardsdeutschland9507">Dr Jim Richards Deutschland</a>
-    </br>
-    </br>
+    <br>
+    <br>
     2. Kor. 5,17-21: Darum: Ist jemand in Christus, so ist er eine neue Kreatur; das Alte ist vergangen, siehe, Neues ist geworden. Aber das alles ist von Gott, der uns mit
     sich selber versöhnt hat durch Christus und uns das Amt gegeben, das die Versöhnung predigt. Denn Gott war in Christus und versöhnte die Welt mit ihm selber und rechnete
     ihnen ihre Sünden nicht zu und hat unter uns aufgerichtet das Wort von der Versöhnung. So sind wir nun Botschafter an Christi statt, denn Gott ermahnt durch uns; so
     bitten wir nun an Christi statt: Lasst euch versöhnen mit Gott! Denn er hat den, der von keiner Sünde wusste, für uns zur Sünde gemacht, auf dass wir in ihm die
     Gerechtigkeit würden, die vor Gott gilt. 
-    </br>
-    </br>
-    </br>
+    <br>
+    <br>
+    <br>
     Bücher von Dr. Richards auf Deutsch:
     <div>
         <img src="Bilder/Gnade.jpg" alt="Gnade Thumbnail" class="thumbnail-bild" />
@@ -176,23 +224,23 @@
             <a href="https://www.gracetoday.de/Buecher/James-B-Richards-Gnade-die-Kraft-zur-Veraenderung.html">Gnade, die Kraft zur Veränderung</a>
         </span>
     </div>
-    </br>
+    <br>
     <div>
         <img src="Bilder/Schmerz.jpg" alt="Schmerz Thumbnail" class="thumbnail-bild" />
         <span>
             <a href="https://www.gracetoday.de/Buecher/James-B-Richards-Setze-dem-Schmerz-ein-Ende.html">Setze dem Schmerz ein Ende</a>
         </span>
     </div>
-    </br>
+    <br>
     <div>
         <img src="Bilder/Frieden.jpg" alt="Schmerz Thumbnail" class="thumbnail-bild" />
         <span>
             <a href="https://www.gracetoday.de/Buecher/James-B-Richards-Das-Evangelium-des-Friedens.html?force_sid=kkm5o901tnoa9h8dd45c6h84i4">Das Evangelium des Friedens</a>
         </span>
     </div>
-    </br>
+    <br>
     <!-- <iframe src="Johannes.html" width="1000" height="400"></iframe>
-    </br>
+    <br>
     <div id="result"></div>
     <script>
         // JavaScript-Code, der direkt ausgeführt wird
@@ -216,10 +264,10 @@
     <script>
         ladeHtmlFile('Johannes.html');
     </script>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </body>
-    </html>
+</html>
