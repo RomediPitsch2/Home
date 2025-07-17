@@ -46,6 +46,12 @@
                 tempDiv.innerHTML = htmlText.trim();
 
                 alert(tempDiv.innerHTML);
+
+                Array.from(outerTag.children).forEach(child => {
+                    if (child.id == "ul") alert(child.innerHTML);
+                });
+
+
                 // Äußerster Tag (erstes Element)
                 const outerTag = tempDiv.firstElementChild;
 
