@@ -64,11 +64,9 @@
             // Über alle direkten LI-Kinder des UL iterieren
             Array.from(container.children).forEach(child => {
                 //       if (child.tagName === "UL") {
-                alert(child.textContent); // Zeige den Text jedes LI an
                 // Beispiel: Button einfügen
                 const button = document.createElement('button');
                 button.textContent = 'Mehr Info';
-                button.textContent = 'Test';
                 if (child.hasChildNodes()) {
                     const ul = child.querySelector('ul');
                     ul.style.display = 'none';
@@ -85,7 +83,6 @@
                     });
                 };
                 //alert("outerHTML: " + container.outerHTML);
-                alert("innerHTML: " + container.innerHTML);
             })
         };
         setze_Buttons('mitButtons');
