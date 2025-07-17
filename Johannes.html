@@ -87,15 +87,15 @@
                  //           const childPre = document.createElement('pre');
                    //         childPre.textContent = child.outerHTML;
                      //       innerTagsDiv.appendChild(childPre);
-                        });
-                    };
+                        };
+                    }
                     //child.appendChild(button);
 
           //      }
                 container.outerHTML = container.outerHTML + "</p>"
                 alert(child.tagName);
                 alert(child.innerHTML);
-            });
+          
 
 
 
@@ -107,22 +107,24 @@
             //pre.textContent = outerTag.outerHTML;
             //container.appendChild(pre);
 
-        }
+        };
+
         function setze_Buttons(id) {
             const container = document.getElementById(id);
             // Über alle direkten LI-Kinder des UL iterieren
             Array.from(container.children).forEach(child => {
-         //       if (child.tagName === "UL") {
-        //            alert(child.textContent); // Zeige den Text jedes LI an
-                    // Beispiel: Button einfügen
-                    const button = document.createElement('div');
-                    button.textContent = 'Test';
-                    if (child.hasChildNodes()) {
-                       child.appendChild(button);
-     //           }
-                });
-            alert("outerHTML: " + container.outerHTML);
-            alert("innerHTML: " + container.innerHTML);
+                //       if (child.tagName === "UL") {
+                //            alert(child.textContent); // Zeige den Text jedes LI an
+                // Beispiel: Button einfügen
+                const button = document.createElement('div');
+                button.textContent = 'Test';
+                if (child.hasChildNodes()) {
+                    child.appendChild(button);
+                    //           }
+                };
+                alert("outerHTML: " + container.outerHTML);
+                alert("innerHTML: " + container.innerHTML);
+            }
         }
         setze_Buttons('mitButtons');
     </script>
