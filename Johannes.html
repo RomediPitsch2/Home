@@ -112,7 +112,7 @@
             const container = document.getElementById(id);
             // Über alle direkten LI-Kinder des UL iterieren
             Array.from(container.children).forEach(child => {
-                if (child.tagName === "LI") {
+                if (child.tagName === "UL") {
                     alert(child.textContent); // Zeige den Text jedes LI an
                     // Beispiel: Button einfügen
                     const button = document.createElement('div');
