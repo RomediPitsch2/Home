@@ -112,16 +112,7 @@
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = htmlText.trim();
 
-            // Das Element holen und den HTML-Text setzen
-            var box = document.getElementById(id);
-            box.innerHTML = htmlText;
-
-            // Die Box stylen (Rahmen, Abstand, Hintergrund)
-            box.style.border = "2px solid #333";
-            box.style.padding = "16px";
-            box.style.backgroundColor = "#f3f3f3";
-            box.style.width = "300px";
-            box.style.margin = "20px";
+            alert(tempDiv.innerHTML);
             // Äußerster Tag (erstes Element)
             const outerTag = tempDiv.firstElementChild;
 
