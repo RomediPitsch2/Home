@@ -225,24 +225,23 @@
                     fetch('Johannes.html')
                         .then(response => response.text())
                         .then(html => {
-                            // Temporäres Element zum Parsen
+                            // 1. Temporaeres Element zum Parsen erzeugen
                             const tempDiv = document.createElement('div');
                             tempDiv.innerHTML = html;
 
-                            // Scripte extrahieren
+                            // 2. Scripte extrahieren und aus dem DOM entfernen
                             const scripts = tempDiv.querySelectorAll('script');
                             scripts.forEach(script => script.parentNode.removeChild(script));
 
-                            // Nur den gewünschten Inhalt einfügen
-                            const inhalt = tempDiv.querySelector('#johannes-inhalt');
+                            // 3. Nur den gewünschten Inhalt einfügen (hier: Bereich mit id="johannes-inhalt")
+                            const inhalt = tempDiv.querySelector('mitButtons');
                             document.getElementById('johannes-content').innerHTML = inhalt ? inhalt.innerHTML : 'Abschnitt nicht gefunden.';
 
-                            // Scripte nachträglich einfügen und ausführen
+                            // 4. Scripte nachträglich einfügen und ausführen
                             scripts.forEach(script => {
                                 const newScript = document.createElement('script');
                                 if (script.src) {
                                     newScript.src = script.src;
-                                    // Optional: Attribute übernehmen (z.B. type)
                                     if (script.type) newScript.type = script.type;
                                     document.body.appendChild(newScript);
                                 } else {
