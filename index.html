@@ -331,11 +331,13 @@
             <br>
 
         </section>
+
         <section id="content-mission" style="display:none;">
             <h2>Missions-Unterstützung</h2>
             <!-- Hier kann Inhalt zur Missions-Unterstützung eingetragen werden -->
             <p>Wie du missionarische Projekte unterstützen kannst.</p>
         </section>
+
         <section id="content-fotos" style="display:none;">
             <h2>Fotos</h2>
             <div class="foto-galerie" id="galerie-fotos"></div>
@@ -353,11 +355,13 @@
             document.getElementById('content-videos').style.display = 'none';
             document.getElementById('content-johannes').style.display = 'none';
             document.getElementById('content-mission').style.display = 'none';
+            document.getElementById('content-fotos').style.display = 'none';
             // Button-Status zurücksetzen
             document.getElementById('tab-books').classList.remove('active');
             document.getElementById('tab-videos').classList.remove('active');
             document.getElementById('tab-johannes').classList.remove('active');
             document.getElementById('tab-mission').classList.remove('active');
+            document.getElementById('tab-fotos').classList.remove('active');
             // Gewählten Tab anzeigen und Button hervorheben
             document.getElementById('content-' + tab).style.display = 'block';
             document.getElementById('tab-' + tab).classList.add('active');
@@ -434,14 +438,16 @@
 
         const galerie = document.getElementById('galerie-fotos');
 
-        fetch('Bilder/list.php')
-            .then(response => response.json())
-            .then(bilder => {
-                alert(JSON.stringify(bilder)); // <<--- Das zeigt dir das Array als Text an!
-                bilder.forEach(bild => {
-                    const img = document.createElement('img');
-                    img.src = bild; // oder einfach img.src = bild; falls list.php schon den Pfad liefert  'Bilder/' + 
-                    img.alt = "Foto";
+        const galerie = document.getElementById('galerie-fotos');
+        const bilder = [
+            "Bilder/IMG_0001.JPG",
+            "Bilder/IMG_0012.JPG"
+            // ...weitere Bilder hier eintragen
+        ];
+        bilder.forEach(bild => {
+            const img = document.createElement('img');
+            img.src = bild;
+            img.alt = "Foto";
                     img.style.cursor = "pointer";
                     img.addEventListener('click', function () {
                         document.getElementById('lightbox-img').src = img.src;
