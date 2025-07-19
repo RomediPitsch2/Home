@@ -36,17 +36,24 @@
             border-radius: 8px;
         }
 
+
         .foto-galerie {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 12px;
         }
 
-        .foto-galerie img {
-            width: 100%;
-            border: 2px solid #679;
-            border-radius: 8px;
-        }
+            .foto-galerie img {
+                width: 100%;
+                border: 2px solid #679;
+                border-radius: 8px;
+                transition: transform 0.2s;
+            }
+
+                .foto-galerie img:hover {
+                    transform: scale(1.04);
+                    box-shadow: 0 0 12px #246;
+                }
 
         nav {
             background: #385;
@@ -332,6 +339,11 @@
         <section id="content-fotos" style="display:none;">
             <h2>Fotos</h2>
             <div class="foto-galerie" id="galerie-fotos"></div>
+            <!-- Lightbox-Overlay -->
+            <div id="lightbox-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; z-index:9999;">
+                <span id="lightbox-close" style="position:absolute;top:32px;right:48px;font-size:3em;color:white;cursor:pointer;font-family:sans-serif;">&#10005;</span>
+                <img id="lightbox-img" src="" alt="Großes Foto" style="max-width:90vw; max-height:90vh; box-shadow:0 0 40px #000;">
+            </div>
         </section>
     </main>
     <script>
@@ -408,13 +420,13 @@
                         const url = parts[2].trim();
 
                         li.innerHTML = `${text1} <span style="
-                        display:inline-block;
-                        border:2px solid #679;
-                        border-radius:8px;
-                        padding:8px;
-                        background:#eef4ff;
-                        margin:8px 0;
-                    ">${spruch} (<a href="${url}" target="_blank">${stelle}</a>)</span>`;
+                            display:inline-block;
+                            border:2px solid #679;
+                            border-radius:8px;
+                            padding:8px;
+                            background:#eef4ff;
+                            margin:8px 0;
+                        ">${spruch} (<a href="${url}" target="_blank">${stelle}</a>)</span>`;
                     }
                 }
             }
@@ -431,9 +443,27 @@
             const img = document.createElement('img');
             img.src = bild;
             img.alt = "Foto";
+            img.style.cursor = "pointer";
+            img.addEventListener('click', function () {
+                document.getElementById('lightbox-img').src = bild;
+                document.getElementById('lightbox-overlay').style.display = 'flex';
+            });
             galerie.appendChild(img);
         });
+
+        // Lightbox schließen bei Klick auf das X oder außerhalb des Bildes
+        document.getElementById('lightbox-close').onclick = function () {
+            document.getElementById('lightbox-overlay').style.display = 'none';
+            document.getElementById('lightbox-img').src = '';
+        };
+        // Schließen durch Klick auf Overlay (außer aufs Bild)
+        document.getElementById('lightbox-overlay').onclick = function (e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                document.getElementById('lightbox-img').src = '';
+            }
+        };
     </script>
-    
+
 </body>
 </html>
