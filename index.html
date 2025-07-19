@@ -146,6 +146,7 @@
             <li><button id="tab-johannes" onclick="showTab('johannes')">Johannes-Evangelium</button></li>
             <li><button id="tab-mission" onclick="showTab('mission')">Missions-Unterstützung</button></li>
             <li><button id="tab-fotos" onclick="showTab('fotos')">Fotos</button></li>
+            <li><button id="tab-kontakt" onclick="showTab('kontakt')">Kontakt</button></li>
         </ul>
     </nav>
     <main>
@@ -347,6 +348,21 @@
                 <img id="lightbox-img" src="" alt="Großes Foto" style="max-width:90vw; max-height:90vh; box-shadow:0 0 40px #000;">
             </div>
         </section>
+
+        <section id="content-kontakt" style="display:none;">
+            <h2>Kontakt</h2>
+            <form id="kontakt-form" autocomplete="off">
+                <label>Vorname:</label><br>
+                <input type="text" name="vorname" required><br><br>
+                <label>Name:</label><br>
+                <input type="text" name="name" required><br><br>
+                <label>Inhalt:</label><br>
+                <textarea name="inhalt" rows="6" required></textarea><br><br>
+                <button type="submit">Absenden</button>
+                <div id="kontakt-feedback" style="margin-top:10px;"></div>
+            </form>
+        </section>
+
     </main>
     <script>
         function showTab(tab) {
@@ -356,12 +372,14 @@
             document.getElementById('content-johannes').style.display = 'none';
             document.getElementById('content-mission').style.display = 'none';
             document.getElementById('content-fotos').style.display = 'none';
+            document.getElementById('content-kontakt').style.display = 'none';
             // Button-Status zurücksetzen
             document.getElementById('tab-books').classList.remove('active');
             document.getElementById('tab-videos').classList.remove('active');
             document.getElementById('tab-johannes').classList.remove('active');
             document.getElementById('tab-mission').classList.remove('active');
             document.getElementById('tab-fotos').classList.remove('active');
+            document.getElementById('tab-kontakt').classList.remove('active');
             // Gewählten Tab anzeigen und Button hervorheben
             document.getElementById('content-' + tab).style.display = 'block';
             document.getElementById('tab-' + tab).classList.add('active');
@@ -448,14 +466,13 @@
             const img = document.createElement('img');
             img.src = bild;
             img.alt = "Foto";
-                    img.style.cursor = "pointer";
-                    img.addEventListener('click', function () {
-                        document.getElementById('lightbox-img').src = img.src;
-                        document.getElementById('lightbox-overlay').style.display = 'flex';
-                    });
-                    galerie.appendChild(img);
-                });
+            img.style.cursor = "pointer";
+            img.addEventListener('click', function () {
+                document.getElementById('lightbox-img').src = img.src;
+                document.getElementById('lightbox-overlay').style.display = 'flex';
             });
+            galerie.appendChild(img);
+        });
 
         // Lightbox schließen bei Klick auf das X oder außerhalb des Bildes
         document.getElementById('lightbox-close').onclick = function () {
