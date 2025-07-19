@@ -366,31 +366,18 @@
             });
         }
         setze_ButtonsbyId('mitButtons');
+       
         document.querySelectorAll('li').forEach(li => {
-            const text = li.textContent.trim();
-            // Prüfe, ob das li mit [ beginnt und mit ] endet
-            if (text.startsWith('[') && text.endsWith(']')) {
-                // Inhalt ohne die äußeren Klammern
-                const inhalt = text.slice(1, -1);
-                // Zerlege anhand des letzten "/" in drei Teile
-                const lastSlash = inhalt.lastIndexOf('|');
-                const secondLastSlash = inhalt.lastIndexOf('|', lastSlash - 1);
-
-                if (lastSlash !== -1 && secondLastSlash !== -1) {
-                    const spruch = inhalt.substring(0, secondLastSlash);
-                    const stelle = inhalt.substring(secondLastSlash + 1, lastSlash);
-                    const url = inhalt.substring(lastSlash + 1);
-
-                    // Erzeuge den neuen HTML-Inhalt
-                    li.innerHTML = `${spruch} (<a href="${url}" target="_blank">${stelle}</a>)`;
-                    // Rahmen per Style setzen
-                    li.style.border = "2px solid #679";
-                    li.style.borderRadius = "8px";
-                    li.style.padding = "8px";
-                    li.style.background = "#eef4ff";
-                    li.style.margin = "8px 0";
-                }
-            }
+            let html = li.innerHTML;
+            // Suche nach Muster: [Spruch/Stelle/URL]
+            // Das g macht es global, das ? lazy für mehrere Klammern im gleichen li
+            html = html.replace(/\[([^\[\]]+?)\/([^\[\]\/]+?)\/(https?:\/\/[^\[\]\/]+?)\]/g, (match, spruch, stelle, url) => {
+                // Eingerahmter Bereich als span/div
+                return `<span style="display:inline-block; border:2px solid #679; border-radius:8px; background:#eef4ff; padding:4px 8px; margin-left:8px;">
+            ${spruch}. (<a href="${url}" target="_blank">${stelle}</a>)
+        </span>`;
+            });
+            li.innerHTML = html;
         });
     </script>
 </body>
