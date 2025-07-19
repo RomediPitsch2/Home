@@ -234,7 +234,7 @@
                             scripts.forEach(script => script.parentNode.removeChild(script));
 
                             // 3. Nur den gewünschten Inhalt einfügen (hier: Bereich mit id="johannes-inhalt")
-                            const inhalt = tempDiv.querySelector('mitButtons');
+                            const inhalt = tempDiv.querySelector('#mitButtons');
                             document.getElementById('johannes-content').innerHTML = inhalt ? inhalt.innerHTML : 'Abschnitt nicht gefunden.';
 
                             // 4. Scripte nachträglich einfügen und ausführen
