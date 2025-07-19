@@ -431,8 +431,7 @@
                 }
             }
         });
-    </script>
-    <script>
+
         const galerie = document.getElementById('galerie-fotos');
 
         fetch('Bilder/list.php')
@@ -440,7 +439,7 @@
             .then(bilder => {
                 bilder.forEach(bild => {
                     const img = document.createElement('img');
-                    img.src = 'Bilder/' + bild; // oder einfach img.src = bild; falls list.php schon den Pfad liefert
+                    img.src = bild; // oder einfach img.src = bild; falls list.php schon den Pfad liefert  'Bilder/' + 
                     img.alt = "Foto";
                     img.style.cursor = "pointer";
                     img.addEventListener('click', function () {
