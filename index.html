@@ -437,6 +437,7 @@
         fetch('Bilder/list.php')
             .then(response => response.json())
             .then(bilder => {
+                alert(JSON.stringify(bilder)); // <<--- Das zeigt dir das Array als Text an!
                 bilder.forEach(bild => {
                     const img = document.createElement('img');
                     img.src = bild; // oder einfach img.src = bild; falls list.php schon den Pfad liefert  'Bilder/' + 
