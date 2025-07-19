@@ -502,16 +502,15 @@
                 //alert("outerHTML: " + container.outerHTML);
             })
         };
-        function setze_ButtonsbyId(id) {
-            const container = document.getElementById(id);
-            setzeButton(container);
-            document.getElementById('BtnGlaube').addEventListener('click', function () {
-                const quelle = document.getElementById('Glaube');
-                const ziel = document.getElementById('ersteListe');
-                ziel.innerHTML = quelle.innerHTML;
-            });
-        }
-        setze_ButtonsbyId('mitButtons');
+        
+        const container = document.getElementById('mitButtons');
+        setzeButton(container);
+        document.getElementById('BtnGlaube').addEventListener('click', function () {
+            const quelle = document.getElementById('Glaube');
+            const ziel = document.getElementById('ersteListe');
+            ziel.innerHTML = quelle.innerHTML;
+        });
+       
     </script>
 
 </body>
