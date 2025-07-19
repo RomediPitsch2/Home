@@ -239,7 +239,7 @@
                                 <li>Paulus zeigt, dass wir in Christus (durch das Leben im Geist und durch das Trachten des Geistes) keine Verdammnis mehr haben: <a href="https://www.bibleserver.com/ELB/Roemer8" target="_blank">Römer 8</a></li>
                             </ul>
                         </li>
-                        <li>Er kam in das Seine, und die Seinen[5] nahmen ihn nicht an; so viele ihn aber aufnahmen, denen gab er das Recht, Kinder Gottes zu werden, denen, die an seinen Namen glauben;die nicht aus Geblüt, auch nicht aus dem Willen des Fleisches, auch nicht aus dem Willen des Mannes, sondern aus Gott geboren sind.<a href="https://www.bibleserver.com/ELB/Johannes1%2C11-13" target="_blank">Joh. 1,11-13</a></li>
+                        <li>Er kam in das Seine, und die Seinen nahmen ihn nicht an; so viele ihn aber aufnahmen, denen gab er das Recht, Kinder Gottes zu werden, denen, die an seinen Namen glauben;die nicht aus Geblüt, auch nicht aus dem Willen des Fleisches, auch nicht aus dem Willen des Mannes, sondern aus Gott geboren sind.<a href="https://www.bibleserver.com/ELB/Johannes1%2C11-13" target="_blank">Joh. 1,11-13</a></li>
                         <li>Der Grund für das Berichten über die Zeichen, die Jesus tat: Joh. 20,30-31: "Diese aber sind geschrieben, damit ihr glaubt, dass Jesus der Christus ist, der Sohn Gottes, und damit ihr, weil ihr glaubt, das Leben habt in seinem Namen."</li>
                         <li>Ohne Glauben ist es unmöglich, Gott wohlzugefallen (<a href=https://www.bibleserver.com/LUT/Hebr%C3%A4er11%2C6" target="_blank">Hebr. 11,6</a>).
                         <li>
@@ -294,7 +294,7 @@
                             [Denn so sehr hat Gott die Welt geliebt, dass er seinen einzigen Sohn gab, damit jeder, der an ihn glaubt,
                             nicht verloren geht, sondern ewiges Leben hat.|Joh. 3,16|https://www.bibleserver.com/ELB/Johannes3%2C16]
                         </li>
-                        <li>[Größere Liebe hat niemand als die, dass er sein Leben hingibt für seine Freunde.|Joh. 15,13|https://www.bibleserver.com/ELB/Johannes15%2C13]</li>
+                        <li>Beispiel: [Größere Liebe hat niemand als die, dass er sein Leben hingibt für seine Freunde.|Joh. 15,13|https://www.bibleserver.com/ELB/Johannes15%2C13]</li>
                         <li>Jesus wusch seinen Jüngern die Füsse: <a href="https://www.bibleserver.com/ELB/Johannes13%2C1-17" target="_blank">Joh. 13,1-17</a></li>
                     </ul>
                 </li>
@@ -368,31 +368,28 @@
         setze_ButtonsbyId('mitButtons');
 
         document.querySelectorAll('li').forEach(li => {
-            const text = li.textContent.trim();
-            // Prüfe, ob das li mit [ beginnt und mit ] endet
-            if (text.includes('[') && text.endsWith(']')) {
-                text1 = text.split('[')[0].trim();
-                text2 = text.split('[')[1].trim();
-                // Inhalt ohne die äußeren Klammern
-                const inhalt = text2.slice(1, -1);
-                // Zerlege anhand des letzten "/" in drei Teile
-                const lastSlash = inhalt.lastIndexOf('|');
-                const secondLastSlash = inhalt.lastIndexOf('|', lastSlash - 1);
+            if (li.innerHTML.includes('[')) {  // Nur wenn eine [ im innerHTML ist
+                const text = li.textContent.trim();
+                const klammerStart = text.indexOf('[');
+                const klammerEnd = text.lastIndexOf(']');
+                if (klammerStart !== -1 && klammerEnd !== -1 && klammerEnd > klammerStart) {
+                    const text1 = text.substring(0, klammerStart).trim();
+                    const inhalt = text.substring(klammerStart + 1, klammerEnd);
+                    const parts = inhalt.split('|'); // Split an '|'
+                    if (parts.length === 3) {
+                        const spruch = parts[0].trim();
+                        const stelle = parts[1].trim();
+                        const url = parts[2].trim();
 
-                if (lastSlash !== -1 && secondLastSlash !== -1) {
-                    const spruch = inhalt.substring(0, secondLastSlash);
-                    const stelle = inhalt.substring(secondLastSlash + 1, lastSlash);
-                    const url = inhalt.substring(lastSlash + 1);
-
-                    // Erzeuge den neuen HTML-Inhalt
-                    li.innerHTML = `${text1} <span style="
-        display:inline-block;
-        border:2px solid #679;
-        border-radius:8px;
-        padding:8px;
-        background:#eef4ff;
-        margin:8px 0;
-">${spruch} (<a href="${url}" target="_blank">${stelle}</a>)</span>`;
+                        li.innerHTML = `${text1} <span style="
+                    display:inline-block;
+                    border:2px solid #679;
+                    border-radius:8px;
+                    padding:8px;
+                    background:#eef4ff;
+                    margin:8px 0;
+                ">${spruch} (<a href="${url}" target="_blank">${stelle}</a>)</span>`;
+                    }
                 }
             }
         });
