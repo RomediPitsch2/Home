@@ -219,11 +219,18 @@
                 das ist die Idee dieser Seite: Ausgehend von den wichtigen Aussagen des Johannes-Evangeliums gelangt man in die Details des Johannes-Evangeliums, aber auch
                 vieler anderer Stellen im Neuen Testament.
                 <br>
-               
-                <div id="container"></div>
-                <div id="inner-tags"></div> -->
-                <iframe src="Johannes.html" width="1000" height="1000"></iframe>
 
+                <div id="johannes-content"></div>
+                <script>
+                    fetch('Johannes.html')
+                        .then(response => response.text())
+                        .then(html => {
+                            const tempDiv = document.createElement('div');
+                            tempDiv.innerHTML = html;
+                            const inhalt = tempDiv.querySelector('#johannes-inhalt');
+                            document.getElementById('johannes-content').innerHTML = inhalt ? inhalt.innerHTML : 'Abschnitt nicht gefunden.';
+                        });
+                </script>
                 <br>
             </p>
         </section>
