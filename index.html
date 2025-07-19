@@ -225,10 +225,11 @@
                     fetch('Johannes.html')
                         .then(response => response.text())
                         .then(html => {
-                            const tempDiv = document.createElement('div');
-                            tempDiv.innerHTML = html;
-                            const inhalt = tempDiv.querySelector('#johannes-inhalt');
-                            document.getElementById('johannes-content').innerHTML = inhalt ? inhalt.innerHTML : 'Abschnitt nicht gefunden.';
+                            document.getElementById('johannes-content').innerHTML = html;
+                        })
+                        .catch(error => {
+                            document.getElementById('johannes-content').innerHTML = 'Fehler beim Laden des Inhalts.';
+                            console.error(error);
                         });
                 </script>
                 <br>
