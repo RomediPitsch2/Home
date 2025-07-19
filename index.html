@@ -225,7 +225,31 @@
                     fetch('Johannes.html')
                         .then(response => response.text())
                         .then(html => {
-                            document.getElementById('johannes-content').innerHTML = html;
+                            // Temporäres Element zum Parsen
+                            const tempDiv = document.createElement('div');
+                            tempDiv.innerHTML = html;
+
+                            // Scripte extrahieren
+                            const scripts = tempDiv.querySelectorAll('script');
+                            scripts.forEach(script => script.parentNode.removeChild(script));
+
+                            // Nur den gewünschten Inhalt einfügen
+                            const inhalt = tempDiv.querySelector('#johannes-inhalt');
+                            document.getElementById('johannes-content').innerHTML = inhalt ? inhalt.innerHTML : 'Abschnitt nicht gefunden.';
+
+                            // Scripte nachträglich einfügen und ausführen
+                            scripts.forEach(script => {
+                                const newScript = document.createElement('script');
+                                if (script.src) {
+                                    newScript.src = script.src;
+                                    // Optional: Attribute übernehmen (z.B. type)
+                                    if (script.type) newScript.type = script.type;
+                                    document.body.appendChild(newScript);
+                                } else {
+                                    newScript.textContent = script.textContent;
+                                    document.body.appendChild(newScript);
+                                }
+                            });
                         })
                         .catch(error => {
                             document.getElementById('johannes-content').innerHTML = 'Fehler beim Laden des Inhalts.';
