@@ -195,8 +195,8 @@
                 </p>
                 <p>
                     Hans Peter Royer: <a href="https://www.youtube.com/watch?v=1_1s009Ecws">Leben in Christus</a>
-                    <button onclick="showFile('Eckstein.html','file-content-eckstein')">Details</button>
-                    <div id="file-content-eckstein"></div>
+                    <button onclick="showFile('Royer.html','file-content-royer')">Details</button>
+                    <div id="file-content-royer"></div>
                 </p>
                 <p>
                     Homepage von Toby Meyer: <a href="https://www.toby-meyer.ch">Toby-Meyer.ch</a>
@@ -211,7 +211,7 @@
             <!-- Hier kann Inhalt zum Johannes-Evangelium eingetragen werden -->
             <p>
                 Im Johannes-Evangelium hat Johannes lange Zeit nach der Auferstehung Jesu aufgeschrieben, was für das Leben eines Menschen wirklich wichtig ist.
-                Das Johannes-Evangelium unterscheidet sich stark von den andern drei Evangelien, die auch Synoptiker genannt werden. Wenn im Hebräerbrief steht:
+                Das Johannes-Evangelium unterscheidet sich stark von den andern drei Evangelien, deren Verfasser Synoptiker genannt werden. Wenn im Hebräerbrief steht:
                 "denn das Gesetz brachte nichts zur Vollendung –, und eingeführt wird eine bessere Hoffnung, durch die wir Gott nahen.", so ist es das Johannes-Evangelium,
                 das diese bessere Hoffnung, diesen neuen Weg des Glaubens beschreibt." Das Johannes-Evangelium ist viel persönlicher geschrieben als die übrigen Evangelien,
                 das heisst es zeigt die Liebesbeziehung von Jesus mit seinen Jüngern und damit mit uns in besonderer Weise.<br />
@@ -219,23 +219,7 @@
                 das ist die Idee dieser Seite: Ausgehend von den wichtigen Aussagen des Johannes-Evangeliums gelangt man in die Details des Johannes-Evangeliums, aber auch
                 vieler anderer Stellen im Neuen Testament.
                 <br>
-                <div id="result"></div>
-                <script>
-                    // JavaScript-Code, der direkt ausgeführt wird
-
-                    fetch('Johannes.html')
-                        .then(response => {
-                            if (!response.ok) throw new Error('Datei nicht gefunden');
-                            return response.text();
-                        })
-                        .then(html => {
-                            document.getElementById("result").innerHTML = html;
-                            getInnerTag(element, nr)
-                        })
-                        .catch(error => {
-                            targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
-                        });
-                </script>
+               
                 <div id="container"></div>
                 <div id="inner-tags"></div> -->
                 <iframe src="Johannes.html" width="1000" height="1000"></iframe>
