@@ -433,23 +433,24 @@
         });
     </script>
     <script>
-        const bilder = [
-            "Bilder/IMG_0001.JPG",
-            "Bilder/IMG_0012.JPG"
-            // ...weitere Bildnamen
-        ];
         const galerie = document.getElementById('galerie-fotos');
-        bilder.forEach(bild => {
-            const img = document.createElement('img');
-            img.src = bild;
-            img.alt = "Foto";
-            img.style.cursor = "pointer";
-            img.addEventListener('click', function () {
-                document.getElementById('lightbox-img').src = bild;
-                document.getElementById('lightbox-overlay').style.display = 'flex';
+        const galerie = document.getElementById('galerie-fotos');
+
+        fetch('Bilder/list.php')
+            .then(response => response.json())
+            .then(bilder => {
+                bilder.forEach(bild => {
+                    const img = document.createElement('img');
+                    img.src = 'Bilder/' + bild; // oder einfach img.src = bild; falls list.php schon den Pfad liefert
+                    img.alt = "Foto";
+                    img.style.cursor = "pointer";
+                    img.addEventListener('click', function () {
+                        document.getElementById('lightbox-img').src = img.src;
+                        document.getElementById('lightbox-overlay').style.display = 'flex';
+                    });
+                    galerie.appendChild(img);
+                });
             });
-            galerie.appendChild(img);
-        });
 
         // Lightbox schließen bei Klick auf das X oder außerhalb des Bildes
         document.getElementById('lightbox-close').onclick = function () {
@@ -463,6 +464,7 @@
                 document.getElementById('lightbox-img').src = '';
             }
         };
+
     </script>
 
 </body>
