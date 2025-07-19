@@ -249,6 +249,16 @@
                                     document.body.appendChild(newScript);
                                 }
                             });
+
+                            // Nach dem Laden aller Scripte die Funktion aufrufen
+                            Promise.all(scriptPromises).then(() => {
+                                if (typeof setze_ButtonsbyId === "function") {
+                                    setze_ButtonsbyId('mitButtons');
+                                } else {
+                                    // Falls Funktion nicht gefunden wurde
+                                    console.warn("setze_ButtonsbyId ist nicht definiert!");
+                                }
+                            });
                         })
                         .catch(error => {
                             document.getElementById('johannes-content').innerHTML = 'Fehler beim Laden des Inhalts.';
