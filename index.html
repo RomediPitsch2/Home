@@ -1,261 +1,132 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-    <title>Empfehlenswerte Internetseiten</title>
+    <meta charset="UTF-8">
+    <title>Romedis Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+
         body {
-            background-color: lightgreen;
-            border: 5px solid darkgreen; /* Rahmenfarbe und -dicke */
-            padding: 1cm; /* Abstand vom Rahmen zum Inhalt */
-            margin: 0; /* Kein äußerer Abstand */
-            box-sizing: border-box; /* Rahmen und Padding werden korrekt berechnet */
-        }
-        .header-container {
-          //  display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
         }
 
-        .header-title {
-            flex: 1;
-            font-size: 2em;
-            font-weight: bold;
+        header {
+            background: #234;
+            color: #fff;
+            padding: 1.5em 0;
+            text-align: center;
         }
 
-        .header-image {
-            margin-left: 25px;
-            max-width: 120px; /* Bild ist kleiner */
-            width: 100%;
-            border: 2px solid darkgreen;
-            border-radius: 10px;
+        nav {
+            background: #345;
         }
 
-        .thumbnail-bild {
-            vertical-align: middle;
-            margin-right: 12px;
-            max-width: 60px;
-            height: auto;
-            border: 2px solid darkgreen;
+            nav ul {
+                display: flex;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                justify-content: center;
+            }
+
+            nav li {
+                margin: 0;
+            }
+
+            nav button {
+                background: none;
+                color: #fff;
+                border: none;
+                padding: 1em 2em;
+                cursor: pointer;
+                font-size: 1em;
+                transition: background 0.2s;
+            }
+
+                nav button.active, nav button:hover {
+                    background: #567;
+                }
+
+        main {
+            padding: 2em;
+            background: #fff;
+            max-width: 800px;
+            margin: 2em auto;
             border-radius: 8px;
+            min-height: 300px;
+        }
+
+        h2 {
+            color: #234;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav button {
+                width: 100%;
+            }
+
+            main {
+                padding: 1em;
+            }
         }
     </style>
-    <meta charset="UTF-8">
-    <script>
-        function showFile(filename, targetId) {
-            const targetDiv = document.getElementById(targetId);
-            // Toggle: Wenn Inhalt da ist, leere das Div
-            if (targetDiv.innerHTML.trim() !== "") {
-                targetDiv.innerHTML = "";
-                return;
-            }
-            // Sonst lade die Datei wie bisher
-            fetch(filename)
-                .then(response => {
-                    if (!response.ok) throw new Error('Datei nicht gefunden');
-                    return response.text();
-                })
-                .then(html => {
-                    targetDiv.innerHTML = html;
-                })
-                .catch(error => {
-                    targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
-                });
-        }
-        function getInnerTag(element, nr) {
-            // Mache etwas mit dem aktuellen Tag
-            // console.log(element.tagName);
-
-            // Gehe alle Kind-Elemente durch
-            // element.children.length; i++) {
-            let meinElement = getInnerTag(element.children[nr]);
-            // Mache etwas mit dem aktuellen Tag
-        }
-        async function ladeHtmlFile(url) {
-            const response = await fetch(url);
-            const htmlText = await response.text();
-
-            // In einen DOM-Tree parsen
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = htmlText.trim();
-
-            // Äußerster Tag (erstes Element)
-            const outerTag = tempDiv.firstElementChild;
-
-            // Anzeige des äußersten Tags
-            const container = document.getElementById('container');
-            container.innerHTML = '';
-
-            // Code für den äußersten Tag anzeigen
-            const pre = document.createElement('pre');
-            pre.textContent = outerTag.outerHTML;
-            container.appendChild(pre);
-
-            // Prüfen, ob innere Tags vorhanden sind
-            if (outerTag.children.length > 0) {
-                const button = document.createElement('button');
-                button.textContent = 'Innere Tags anzeigen';
-                button.onclick = function () {
-                    const innerTagsDiv = document.getElementById('inner-tags');
-                    innerTagsDiv.innerHTML = '';
-                    Array.from(outerTag.children).forEach(child => {
-                        const childPre = document.createElement('pre');
-                        childPre.textContent = child.outerHTML;
-                        innerTagsDiv.appendChild(childPre);
-                    });
-                };
-                container.appendChild(button);
-            }
-        }
-        async function setzeButtons(id) {
-            const container = document.getElementById(id);
-
-            var htmlText = container.innerHTML;
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = htmlText.trim();
-
-            alert(tempDiv.innerHTML);
-            // Äußerster Tag (erstes Element)
-            const outerTag = tempDiv.firstElementChild;
-
-            // Anzeige des äußersten Tags
-           
-
-            // Code für den äußersten Tag anzeigen
-            const pre = document.createElement('pre');
-            pre.textContent = outerTag.outerHTML;
-            container.appendChild(pre);
-
-            // Prüfen, ob innere Tags vorhanden sind
-            if (outerTag.children.length > 0) {
-                const button = document.createElement('button');
-                button.textContent = 'Innere Tags anzeigen';
-                button.onclick = function () {
-                    const innerTagsDiv = document.getElementById('inner-tags');
-                    innerTagsDiv.innerHTML = '';
-                    Array.from(outerTag.children).forEach(child => {
-                        const childPre = document.createElement('pre');
-                        childPre.textContent = child.outerHTML;
-                        innerTagsDiv.appendChild(childPre);
-                    });
-                };
-                container.appendChild(button);
-            }
-        }
-    </script>
 </head>
 <body>
-    <div class="header-container">
-        <div class="header-title">
-            Schatzkiste (empfehlenswerte Internetseiten):
-        </div>
-        <img class="header-image"
-             src="https://img.freepik.com/vektoren-premium/offene-einfache-schatzkiste-flache-vektor-illustration-offene-einfache-schatzkiste-handzeichnung-isolierte-vektor-illustration_501705-874.jpg"
-             alt="Schatzkiste" />
-    </div>
-    <div class="links-container">
-        <p>
-            Conrad Max Gille:
-            <a href="https://www.youtube.com/@Brotundwein">Brot und Wein-Videos</a>
-            <button onclick="showFile('Conrad.html','file-content-conrad')">Details</button>
-            <div id="file-content-conrad"></div>
-        </p>
-        <p>
-            Gaby Wentland: <a href="https://www.youtube.com/@Alltagssieger">Alltagssieger</a>
-            <button onclick="showFile('Wentland.html','file-content-wentland')">Details</button>
-            <div id="file-content-wentland"></div>
-        </p>
-        <p>
-            Philipp Schmerold: <a href="https://www.youtube.com/@revivalchurches">Revival Church</a>
-            <button onclick="showFile('Schmerold.html','file-content-schmerold')">Details</button>
-            <div id="file-content-schmerold"></div>
-        </p>
-        <p>
-            Daniel Exler: <a href="https://www.youtube.com/watch?v=jVAMtc6Bk8U&t=9s">Heilung und Befreiung (1-6)</a>
-            <button onclick="showFile('Exler.html','file-content-exler')">Details</button>
-            <div id="file-content-exler"></div>
-        </p>
-        <p>
-            Hans-Joachim Eckstein: <a href="https://www.youtube.com/watch?v=CrDa3xRDCkk">Abschiedsreden Johannes-Evangelium (1-7)</a>
-            <button onclick="showFile('Eckstein.html','file-content-eckstein')">Details</button>
-            <div id="file-content-eckstein"></div>
-        </p>
-        <p>
-            Hans Peter Royer: <a href="https://www.youtube.com/watch?v=1_1s009Ecws">Leben in Christus</a>
-            <button onclick="showFile('Eckstein.html','file-content-eckstein')">Details</button>
-            <div id="file-content-eckstein"></div>
-        </p>
-        <p>
-            Homepage von Toby Meyer: <a href="https://www.toby-meyer.ch">Toby-Meyer.ch</a>
-            <button onclick="showFile('Meyer.html','file-content-meyer')">Details</button>
-            <div id="file-content-meyer"></div>
-        </p>
-    </div>
-    <br>
-
-    Erweckungs-Bewegung im Zürcher Oberland: <a href="https://www.jesus-rettet.ch">Jesus-rettet.ch</a>
-    <br>
-    <br>
-    Englisch:</br></br>
-    Dr. Jim Richards:  <a href="https://www.impactministries.com">Impact-Ministries, USA</a>
-    <br>
-    Deutscher YouTube-Kanal von Dr. Jim Richards: <a href="https://www.youtube.com/@drjimrichardsdeutschland9507">Dr Jim Richards Deutschland</a>
-    <br>
-    <br>
-    2. Kor. 5,17-21: Darum: Ist jemand in Christus, so ist er eine neue Kreatur; das Alte ist vergangen, siehe, Neues ist geworden. Aber das alles ist von Gott, der uns mit
-    sich selber versöhnt hat durch Christus und uns das Amt gegeben, das die Versöhnung predigt. Denn Gott war in Christus und versöhnte die Welt mit ihm selber und rechnete
-    ihnen ihre Sünden nicht zu und hat unter uns aufgerichtet das Wort von der Versöhnung. So sind wir nun Botschafter an Christi statt, denn Gott ermahnt durch uns; so
-    bitten wir nun an Christi statt: Lasst euch versöhnen mit Gott! Denn er hat den, der von keiner Sünde wusste, für uns zur Sünde gemacht, auf dass wir in ihm die
-    Gerechtigkeit würden, die vor Gott gilt. 
-    <br>
-    <br>
-    <br>
-    Bücher von Dr. Richards auf Deutsch:
-    <div>
-        <img src="Bilder/Gnade.jpg" alt="Gnade Thumbnail" class="thumbnail-bild" />
-        <span>
-            <a href="https://www.gracetoday.de/Buecher/James-B-Richards-Gnade-die-Kraft-zur-Veraenderung.html">Gnade, die Kraft zur Veränderung</a>
-        </span>
-    </div>
-    <br>
-    <div>
-        <img src="Bilder/Schmerz.jpg" alt="Schmerz Thumbnail" class="thumbnail-bild" />
-        <span>
-            <a href="https://www.gracetoday.de/Buecher/James-B-Richards-Setze-dem-Schmerz-ein-Ende.html">Setze dem Schmerz ein Ende</a>
-        </span>
-    </div>
-    <br>
-    <div>
-        <img src="Bilder/Frieden.jpg" alt="Schmerz Thumbnail" class="thumbnail-bild" />
-        <span>
-            <a href="https://www.gracetoday.de/Buecher/James-B-Richards-Das-Evangelium-des-Friedens.html?force_sid=kkm5o901tnoa9h8dd45c6h84i4">Das Evangelium des Friedens</a>
-        </span>
-    </div>
-    <br>
-    <!-- <iframe src="Johannes.html" width="1000" height="400"></iframe>
-    <br>
-    <div id="result"></div>
+    <header>
+        <h1>Romedis Homepage</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><button id="tab-books" class="active" onclick="showTab('books')">Buchempfehlungen</button></li>
+            <li><button id="tab-videos" onclick="showTab('videos')">Videoempfehlungen</button></li>
+            <li><button id="tab-johannes" onclick="showTab('johannes')">Johannes-Evangelium</button></li>
+            <li><button id="tab-mission" onclick="showTab('mission')">Missions-Unterstützung</button></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="content-books">
+            <h2>Buchempfehlungen</h2>
+            <!-- Hier können Buchempfehlungen eingetragen werden -->
+            <p>Hier findest du ausgewählte Buchempfehlungen rund um Glaube, Leben und Inspiration.</p>
+        </section>
+        <section id="content-videos" style="display:none;">
+            <h2>Videoempfehlungen</h2>
+            <!-- Hier können Videoempfehlungen eingetragen werden -->
+            <p>Eine Sammlung empfehlenswerter Videos zu verschiedenen Themen.</p>
+        </section>
+        <section id="content-johannes" style="display:none;">
+            <h2>Johannes-Evangelium</h2>
+            <!-- Hier kann Inhalt zum Johannes-Evangelium eingetragen werden -->
+            <p>Informationen, Auslegungen und Gedanken zum Johannes-Evangelium.</p>
+        </section>
+        <section id="content-mission" style="display:none;">
+            <h2>Missions-Unterstützung</h2>
+            <!-- Hier kann Inhalt zur Missions-Unterstützung eingetragen werden -->
+            <p>Wie du missionarische Projekte unterstützen kannst.</p>
+        </section>
+    </main>
     <script>
-        // JavaScript-Code, der direkt ausgeführt wird
-
-        fetch('Johannes.html')
-            .then(response => {
-                if (!response.ok) throw new Error('Datei nicht gefunden');
-                return response.text();
-            })
-            .then(html => {
-                document.getElementById("result").innerHTML = html;
-                getInnerTag(element, nr)
-            })
-            .catch(error => {
-                targetDiv.innerHTML = 'Fehler beim Laden: ' + error;
-            });
+        function showTab(tab) {
+            // Alle Tabs ausblenden
+            document.getElementById('content-books').style.display = 'none';
+            document.getElementById('content-videos').style.display = 'none';
+            document.getElementById('content-johannes').style.display = 'none';
+            document.getElementById('content-mission').style.display = 'none';
+            // Button-Status zurücksetzen
+            document.getElementById('tab-books').classList.remove('active');
+            document.getElementById('tab-videos').classList.remove('active');
+            document.getElementById('tab-johannes').classList.remove('active');
+            document.getElementById('tab-mission').classList.remove('active');
+            // Gewählten Tab anzeigen und Button hervorheben
+            document.getElementById('content-' + tab).style.display = 'block';
+            document.getElementById('tab-' + tab).classList.add('active');
+        }
     </script>
-    <div id="container"></div>
-    <div id="inner-tags"></div> -->
-    <iframe src="Johannes.html" width="1000" height="1000"></iframe>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 </body>
 </html>
