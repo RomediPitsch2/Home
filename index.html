@@ -221,7 +221,7 @@
 
             <ul id="mitButtons">
                 <li>
-                    Es zeigt, was wirklich wichtig ist.
+                    Das Johannes-Evangelium zeigt auf, wie man zum wahren Leben in Gott gelangt.
                     <ul>
                         <li>Ohne vorher ein anderes Wort mit ihm zu wechseln, sagte Jesus zu Nikodemus: Ihr müsst von Neuem geboren werden.</li>
                         <li>Johannes 3,3; Jesus antwortete und sprach zu ihm: Wahrlich, wahrlich, ich sage dir: Wenn jemand nicht von Neuem geboren wird, so kann er das Reich Gottes nicht sehen.</li>
@@ -234,7 +234,7 @@
                                     <button id="BtnGlaube">Glaube</button><div id="ersteListe"></div>
                                 </li>
                                 <li>Paulus zeigt, dass wir Frieden mit Gott erlangen und Zugang zu Gottes überschwenglicher Gnade bekommen, wenn wir glauben: <a href="https://www.bibleserver.com/ELB/Roemer5" target="_blank">Römer 5</a></li>
-                                <li>Paulus zeigt, dass wir durch den Tod Jesu auch von einzelnen Sünden befreit werden: <a href="https://www.bibleserver.com/ELB/Roemer6" target="_blank">Roemer 6</a></li>
+                                <li>Paulus zeigt, dass wir durch den Tod Jesu auch von einzelnen Sünden befreit werden: <a href="https://www.bibleserver.com/ELB/Roemer6" target="_blank">Römer 6</a></li>
                                 <li>Paulus zeigt, dass durch das Gesetz zwar Sünde aufgedeckt wird, dass das Gesetz aber nicht helfen kann: <a href="https://www.bibleserver.com/ELB/Roemer7" target="_blank">Römer 7</a></li>
                                 <li>Paulus zeigt, dass wir in Christus (durch das Leben im Geist und durch das Trachten des Geistes) keine Verdammnis mehr haben: <a href="https://www.bibleserver.com/ELB/Roemer8" target="_blank">Römer 8</a></li>
                             </ul>
@@ -245,8 +245,9 @@
                             Darum ist die Frage sehr wichtig, was Glaube ist.
                             <ul id="Glaube">
                                 <li>Der Glaube ist zuerst einmal Vertrauen: Abraham glaubte Gott und das wurde ihm zur Gerechtigkeit angerechnet.</li>
-                                <li>Der Glaube aber ist eine Wirklichkeit (eine Substanz, ein Zustandekommen, eine Grundlage) dessen, was man hofft, ein Überzeugtsein von Dingen, die man nicht sieht (Hebr. 11,1).</li></br>
+                                <li>Definition von Glaube = Vertrauen: Der Glaube aber ist eine Wirklichkeit (eine Substanz, ein Zustandekommen, eine Grundlage) dessen, was man hofft, ein Überzeugtsein von Dingen, die man nicht sieht (Hebr. 11,1).</li></br>
                                 <li><a href="https://www.bibleserver.com/ELB/Hebr%C3%A4er11" target="_blank">Hebräer 11, das Kapitel des Glaubens</a></li>
+                                <li>[Also ist der Glaube aus der Verkündigung, die Verkündigung aber durch das Wort Christi./Röm. 10,17/https://www.bibleserver.com/ELB/R%C3%B6mer10%2C17]</li>
                                 <li><a href="https://www.bibleserver.com/ELB/Roemer4" target="_blank">Wie Abraham geglaubt hat.</a></li>
                                 <li>Denn den Namen des HERRN rufe ich aus: Gebt Ehre unserm Gott! Der Fels; vollkommen ist sein Tun, denn alle seine Wege sind recht. Ein Gott der Treue und ohne Trug, gerecht und gerade ist er! (<a href=https://www.bibleserver.com/ELB/5.Mose32%2C3-46" target="_blank">Hebr. 11,6</a>)</li>
                                 <li><a href="https://www.bibleserver.com/ELB/2.Timotheus1%2C12" target="_blank">Aus diesem Grund leide ich dies auch; aber ich schäme mich nicht, denn ich weiß, wem ich geglaubt habe, und bin überzeugt, dass er mächtig ist, mein anvertrautes Gut bis auf jenen Tag zu bewahren. .</a></li>
@@ -361,6 +362,32 @@
                 ziel.innerHTML = quelle.innerHTML;
             });
         }
+        document.querySelectorAll('li').forEach(li => {
+            const text = li.textContent.trim();
+            // Prüfe, ob das li mit [ beginnt und mit ] endet
+            if (text.startsWith('[') && text.endsWith(']')) {
+                // Inhalt ohne die äußeren Klammern
+                const inhalt = text.slice(1, -1);
+                // Zerlege anhand des letzten "/" in drei Teile
+                const lastSlash = inhalt.lastIndexOf('/');
+                const secondLastSlash = inhalt.lastIndexOf('/', lastSlash - 1);
+
+                if (lastSlash !== -1 && secondLastSlash !== -1) {
+                    const spruch = inhalt.substring(0, secondLastSlash);
+                    const stelle = inhalt.substring(secondLastSlash + 1, lastSlash);
+                    const url = inhalt.substring(lastSlash + 1);
+
+                    // Erzeuge den neuen HTML-Inhalt
+                    li.innerHTML = `${spruch} (<a href="${url}" target="_blank">${stelle}</a>)`;
+                    // Rahmen per Style setzen
+                    li.style.border = "2px solid #679";
+                    li.style.borderRadius = "8px";
+                    li.style.padding = "8px";
+                    li.style.background = "#eef4ff";
+                    li.style.margin = "8px 0";
+                }
+            }
+        });
         setze_ButtonsbyId('mitButtons');
     </script>
 </body>
