@@ -36,6 +36,18 @@
             border-radius: 8px;
         }
 
+        .foto-galerie {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .foto-galerie img {
+            width: 100%;
+            border: 2px solid #679;
+            border-radius: 8px;
+        }
+
         nav {
             background: #385;
         }
@@ -319,13 +331,7 @@
         </section>
         <section id="content-fotos" style="display:none;">
             <h2>Fotos</h2>
-            <!-- Hier können Fotos eingetragen werden -->
-            <p>
-                <div>
-                    
-                </div>
-                <br>
-            </p>
+            <div class="foto-galerie" id="galerie-fotos"></div>
         </section>
     </main>
     <script>
@@ -402,17 +408,32 @@
                         const url = parts[2].trim();
 
                         li.innerHTML = `${text1} <span style="
-                    display:inline-block;
-                    border:2px solid #679;
-                    border-radius:8px;
-                    padding:8px;
-                    background:#eef4ff;
-                    margin:8px 0;
-                ">${spruch} (<a href="${url}" target="_blank">${stelle}</a>)</span>`;
+                        display:inline-block;
+                        border:2px solid #679;
+                        border-radius:8px;
+                        padding:8px;
+                        background:#eef4ff;
+                        margin:8px 0;
+                    ">${spruch} (<a href="${url}" target="_blank">${stelle}</a>)</span>`;
                     }
                 }
             }
         });
     </script>
+    <script>
+        const bilder = [
+            "Bilder/IMG001.jpg",
+            "Bilder/IMG002.jpg"
+            // ...weitere Bildnamen
+        ];
+        const galerie = document.getElementById('galerie-fotos');
+        bilder.forEach(bild => {
+            const img = document.createElement('img');
+            img.src = bild;
+            img.alt = "Foto";
+            galerie.appendChild(img);
+        });
+    </script>
+    
 </body>
 </html>
